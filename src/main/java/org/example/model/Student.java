@@ -72,7 +72,7 @@ public class Student {
     }
 
     public Student(boolean deleted, int id, String fullname, LocalDate birthDate, double cost, boolean active) {
-        this.deleted = false;
+        this.deleted = deleted;
         this.id = id;
         this.fullname = fullname;
         this.birthDate = birthDate;

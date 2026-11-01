@@ -61,8 +61,6 @@ public class MainFrame extends JFrame {
         bottomPanel.add(actionPanel);
         add(bottomPanel, BorderLayout.SOUTH);
         JPanel searchDeletePanel = new JPanel();
-        JButton findByIdBtn = new JButton("Найти по ID");
-        JButton findByNameBtn = new JButton("Найти по ФИО");
         JButton deleteByIdBtn = new JButton("Удалить по ID");
         JButton deleteByNameBtn = new JButton("Удалить по ФИО");
         bottomPanel.add(searchDeletePanel);
@@ -103,9 +101,8 @@ public class MainFrame extends JFrame {
             if (found.isEmpty()) JOptionPane.showMessageDialog(this, "Записи не найдены!");
             else {
                 for (Student s : found) {
-                    fileManager.addStudent(s);
+                    tableModel.addRow(new Object[]{s.getId(), s.getFullname(), s.getBirthDate(), s.getCost(), s.isActive()});
                 }
-                refreshTable();
             }
         } catch (Exception ex) { JOptionPane.showMessageDialog(this, "Ошибка ввода: " + ex.getMessage());}
         });
